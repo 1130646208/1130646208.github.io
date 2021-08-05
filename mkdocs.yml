@@ -2,18 +2,21 @@ site_name: GamesVessel API Document
 
 ######################structure#####################
 nav:
-  - MkDocs_tutorial: index.md
-  - server_java:
-    - olap:
-        - stage1: server_java/olap/stages/stage1.md
-        - stage2: server_java/olap/stages/stage2.md
-        - stage3: server_java/olap/stages/stage3.md
+  - Home: index.md
 
-  - server_python:
-    - example:
-      - stage1: server_python/example/example.md
-      - stage2: server_python/example/example.md
-      - stage3: server_python/example/example.md
+  - Get Started: _get_started.md
+
+  - API QUick Reference:
+    - OLAP: api/_olap.md
+    - OTHER: api/_other.md
+
+  - API Reference:
+    - Cube管理: api/olap/olap1.md
+    - 核心查询: api/olap/olap2.md
+
+  - Data Structures: _data_structures.md
+
+  - Change Log: _change_log.md
 
 
 ######################configurations#####################
@@ -23,7 +26,7 @@ theme:
     - navigation.instant
     - navigation.tabs
     - navigation.top
-    - toc.integrate
+    # - toc.integrate
     - search.highlight
 
 plugins:

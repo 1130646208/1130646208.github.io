@@ -5,8 +5,9 @@ nav:
   - Home: index.md
 
   - Get Started: _get_started.md
+  - Quick Start: _quick_start.md
 
-  - API QUick Reference:
+  - API Quick Reference:
     - OLAP: api/_olap.md
     - OTHER: api/_other.md
 

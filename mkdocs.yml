@@ -1,24 +1,35 @@
-site_name: GV api docs
+site_name: GamesVessel API Document
+
+######################structure#####################
 nav:
-  - 介绍: index.md
-  - 安装:
-      - 本地环境搭建: install/local.md
-      - 发布至GitHub Pages: install/github-pages.md
-      - 发布至自己的HTTP Server: install/http-server.md
-  - 语法:
-      - 语法总览: syntax/main.md
-      - 标题: syntax/headline.md
-      - 段落: syntax/paragraph.md
-  - 接口设计:
-      - stage1: api/stage1.md
-      - stage2: api/stage2.md
-      - stage3: https://git.gamesvessel.cn/gv-server-personal/personal_wangshuangxing_server/blob/master/README.md
+  - MkDocs_tutorial: index.md
+  - server_java:
+    - olap:
+        - stage1: server_java/olap/stages/stage1.md
+        - stage2: server_java/olap/stages/stage2.md
+        - stage3: server_java/olap/stages/stage3.md
+
+  - server_python:
+    - example:
+      - stage1: server_python/example/example.md
+      - stage2: server_python/example/example.md
+      - stage3: server_python/example/example.md
 
 
-
+######################configurations#####################
 theme:
   name: material
-  language: zh
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.top
+    - toc.integrate
+    - search.highlight
+
+plugins:
+  - search:
+      lang: en
+
 markdown_extensions:
   - admonition
   - codehilite:
@@ -26,6 +37,7 @@ markdown_extensions:
       linenums: false
   - toc:
       permalink: true
+      toc_depth: 3
   - footnotes
   - meta
   - def_list
@@ -45,8 +57,3 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.tilde
   - pymdownx.tabbed
-  
-
-
-
-

@@ -1,65 +1,121 @@
-# Welcome to MkDocs
+# 本地安装方法
+---
+## 1 安装mkdocs环境
+```bash
+pip3 install mkdocs mkdocs-material
+```
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+---
+## 2 初始化项目
 
-## Commands
+```bash
+mkdocs new your-project-name
+```
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
-- [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- [ ] Vestibulum convallis sit amet nisi a tincidunt
-    * [x] In hac habitasse platea dictumst
-    * [x] In scelerisque nibh non dolor mollis congue sed et metus
-    * [ ] Praesent sed risus massa
-- [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
-
-- ==This was marked==
-- ^^This was inserted^^
-- ~~This was deleted~~
+运行之后会在本地生成一个目录
 
 
-=== "C"
+```bash
+.
+├── docs            # md源文件
+│   └── index.md    
+└── mkdocs.yml      # 配置文件
+```
 
-    ``` c
-    #include <stdio.h>
+---
+## 3 运行项目
 
-    int main(void) {
-      printf("Hello world!\n");
-      return 0;
-    }
-    ```
+```bash
+mkdocs serve
+```
+在localhost:8000即可访问
 
-=== "C++"
+---
+## 4 配置文件结构
 
-    ``` c++
-    #include <iostream>
+如果在配置文件中指定以下结构
 
-    int main(void) {
-      std::cout << "Hello world!" << std::endl;
-      return 0;
-    }
-    ```
+```
+site_name: 站点名称
+nav:
+  - 首页: index.md
+  - OLAP:
+      - stage1: olap/stage/1/xxx1.md
+      - stage2: olap/stage/2/xxx.md
 
-# 优势与劣势
+...
+```
 
-## 优势:
-- 轻量级
-- 部署简单
-- 插件扩展简单
-- 发布文章简单
+则对应your-project-name下的目录结构为:
 
-## 劣势
-- 只能编辑markdown,再由服务器渲染.高级功能需要学习成本(不高).
-- 对协作支持不好(多人修改一份文档,保存即生效.文档位置由配置文件指定.)
-- 对大型项目支持不好
-    - 目录结构需要修改yaml配置文件,保存即生效.如果不小心语法错误保存,服务器即挂.不过重启也很迅速.
-    - 目录结构如果越来越复杂,配置文件会越来越长,不知道yaml支不支持配置文件中链接到另一个文件?
+```bash
+.
+├── docs
+│   ├── index.md
+│   └── olap/
+│       └── stage/
+│           ├── 1/  # 目录下放xxx1.md
+│           └── 2/  # 目录下放xxx2.md
+└── mkdocs.yml
+```
+
+保存配置文件即可生效.
+
+---
+## 5 静态页面生成
+
+### 5.1 发布到github pages
+
+在github repo根目录运行以下命令
+
+```mkdocs gh-deploy```
+
+即可生成静态页面到gh-pages分支,在repo的settings中定向到gh-pages即可通过公网访问
+
+https://1130646208.github.io/
+
+### 5.2 gitlab也有gitlab pages的服务
+
+
+### 5.3 发布到个人服务器
+
+运行命令
+
+```bash
+
+mkdocs build
+
+```
+即可构建静态页面,通过nginx访问
+
+```bash
+.
+└── site
+    ├── 404.html
+    ├── css
+    │   ├── base.css
+    │   ├── bootstrap.min.css
+    │   └── font-awesome.min.css
+    ├── fonts
+    │   ├── fontawesome-webfont.eot
+    │   ├── fontawesome-webfont.svg
+    │   ├── fontawesome-webfont.ttf
+    │   ├── fontawesome-webfont.woff
+    │   └── fontawesome-webfont.woff2
+    ├── img
+    │   ├── favicon.ico
+    │   └── grid.png
+    ├── index.html
+    ├── js
+    │   ├── base.js
+    │   ├── bootstrap.min.js
+    │   └── jquery-1.10.2.min.js
+    ├── search
+    │   ├── lunr.js
+    │   ├── main.js
+    │   ├── search_index.json
+    │   └── worker.js
+    ├── sitemap.xml
+    └── sitemap.xml.gz
+
+```

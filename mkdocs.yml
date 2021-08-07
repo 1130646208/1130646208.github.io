@@ -4,20 +4,17 @@ site_name: GamesVessel API Document
 nav:
   - Home: index.md
 
-  - Get Started: _get_started.md
-  - Quick Start: _quick_start.md
+  - Get Started: get_started.md
 
-  - API Quick Reference:
-    - OLAP: api/_olap.md
-    - OTHER: api/_other.md
+  - Server Java:
+    - OLAP:
+      - Cube管理: server_java/olap/olap1.md
+      - 核心查询: server_java/olap/olap2.md
+      - Change Log: server_java/olap/change_log.md
+    - Dictionary: server_java/dictionary/dictionary.md
 
-  - API Reference:
-    - Cube管理: api/olap/olap1.md
-    - 核心查询: api/olap/olap2.md
-
-  - Data Structures: _data_structures.md
-
-  - Change Log: _change_log.md
+  - Server Python: 
+    - Demo: server_python/demo/demo.md
 
 
 ######################configurations#####################
@@ -57,6 +54,7 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.tasklist
   - pymdownx.tilde

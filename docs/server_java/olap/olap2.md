@@ -1,12 +1,8 @@
-# OLAP二期接口文档
+# 核心查询逻辑
 
+## 1. 查询维度下可选值
 
-
-## 核心查询逻辑
-
-### 1. 查询维度下可选值
-
-#### Request
+### Request
 **Url** 
 
 [POST] /search/dimension/value
@@ -22,7 +18,7 @@
 | cubeId    | Long    | 是       |        | Cube Id     |
 | dimension | String  | 是       |        | 维度列名 |
 
-#### Response
+### Response
 
 **Desc**
 
@@ -77,9 +73,9 @@ curl -X POST https://0.0.0.0/search/dimension/value
 ```
 
 
-### 2. 可操作列
+## 2. 可操作列
 
-#### Request
+### Request
 
 **Url** 
 
@@ -97,7 +93,7 @@ curl -X POST https://0.0.0.0/search/dimension/value
 | columnType | String | 否       | ROW    | 列类型: ROW, VALUE |
 | columnName | String | 否       |        | 列名               |
 
-#### Response
+### Response
 
 **Desc**
 
@@ -167,9 +163,9 @@ curl -X POST https://0.0.0.0/search/column
 ```
 
 
-### 3. 核心查询
+## 3. 核心查询
 
-#### Request
+### Request
 
 **Url** 
 
@@ -204,7 +200,7 @@ curl -X POST https://0.0.0.0/search/column
 | values    | List String | 否      |         | 选择的值           |
 
 
-#### Response
+### Response
 
 **Desc**
 

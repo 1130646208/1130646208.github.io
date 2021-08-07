@@ -1,6 +1,6 @@
 # Cube管理
 
-## 查询Cube列表
+## 1.查询Cube列表
 
 ### Request
 **Url** 
@@ -105,7 +105,7 @@ curl -X POST https://0.0.0.0/cubr/list
 ```
 
 
-## 添加Cube
+## 2.添加Cube
 
 ### Request
 
@@ -183,7 +183,7 @@ curl -X POST https://0.0.0.0/cubr/add
 ```
 
 
-## 更新Cube
+## 3.更新Cube
 
 ### Request
 
@@ -261,7 +261,7 @@ curl -X POST https://0.0.0.0/cubr/update
 ```
 
 
-## 删除Cube
+## 4.删除Cube
 
 ### Request
 

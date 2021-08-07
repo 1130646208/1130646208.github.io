@@ -5,7 +5,7 @@ nav:
   - Home: index.md
 
   - Get Started: get_started.md
-  - Markdown REF: markdown_reference.md
+  - Markdown Reference: markdown_reference.md
 
   - Server Java:
     - OLAP:

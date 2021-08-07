@@ -5,6 +5,7 @@ nav:
   - Home: index.md
 
   - Get Started: get_started.md
+  - Markdown REF: markdown_reference.md
 
   - Server Java:
     - OLAP:
@@ -24,7 +25,14 @@ theme:
     - navigation.tabs
     - navigation.top
     # - toc.integrate
+    # - navigation.sections
     - search.highlight
+    - search.suggest
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/gitlab
+  language: zh
+
 
 plugins:
   - search:
@@ -48,7 +56,8 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_png
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -58,3 +67,16 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.tilde
   - pymdownx.tabbed
+
+
+
+######################extra configurations#####################
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: http://gamesvessel.com/
+
+copyright: Copyright &copy; 2019 - 2021 Games Vessel Pte. Ltd.
+repo_url: https://git.gamesvessel.cn/gv-java/biz/gv-olap
+repo_name: OLAP

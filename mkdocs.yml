@@ -16,7 +16,6 @@ nav:
   - Server Python: 
     - Demo: server_python/demo/demo.md
 
-
 ######################configurations#####################
 theme:
   name: material

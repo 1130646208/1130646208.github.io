@@ -1,10 +1,8 @@
-# OLAP一期接口文档
+# Cube管理
 
-## Cube管理
+## 查询Cube列表
 
-### 查询Cube列表
-
-#### Request
+### Request
 **Url** 
 
 [POST] /cube/list
@@ -21,7 +19,7 @@
 | startTime | Instant | 否 | 筛选起始时间 |  
 | endTime | Instant | 否 | 筛选结束时间 |  
 
-#### Response
+### Response
 
 **Desc**
 
@@ -107,9 +105,9 @@ curl -X POST https://0.0.0.0/cubr/list
 ```
 
 
-### 添加Cube
+## 添加Cube
 
-#### Request
+### Request
 
 **Url** 
 
@@ -128,7 +126,7 @@ curl -X POST https://0.0.0.0/cubr/list
 | name | String | 是 | 新增Cube的名称 |  
 | description | String | 是 | Cube的描述 |  
 
-#### Response
+### Response
 
 **Desc**
 
@@ -185,9 +183,9 @@ curl -X POST https://0.0.0.0/cubr/add
 ```
 
 
-### 更新Cube
+## 更新Cube
 
-#### Request
+### Request
 
 **Url** 
 
@@ -206,7 +204,7 @@ curl -X POST https://0.0.0.0/cubr/add
 | name | String | 是  | 更新Cube的名称 |  
 | description | String   |是  | Cube的描述 |  
 
-#### Response
+### Response
 
 **Desc**
 
@@ -263,9 +261,9 @@ curl -X POST https://0.0.0.0/cubr/update
 ```
 
 
-### 删除Cube
+## 删除Cube
 
-#### Request
+### Request
 
 **Url** 
 
@@ -292,7 +290,7 @@ curl -X POST https://0.0.0.0/cubr/update
 ```
 
 
-#### Response
+### Response
 
 **Desc**
 

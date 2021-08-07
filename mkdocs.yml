@@ -10,8 +10,8 @@ nav:
     - OLAP:
       - Cube管理: server_java/olap/olap1.md
       - 核心查询: server_java/olap/olap2.md
-      - Change Log: server_java/olap/change_log.md
-    - Dictionary: server_java/dictionary/dictionary.md
+    - ChangeLogs: server_java/change_log.md
+    - Dictionary: server_java/dictionary.md
 
   - Server Python: 
     - Demo: server_python/demo/demo.md

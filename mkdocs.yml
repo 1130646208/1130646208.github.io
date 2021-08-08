@@ -31,6 +31,8 @@ theme:
     - content.code.annotate
   icon:
     repo: fontawesome/brands/gitlab
+
+
   language: zh
 
 
@@ -79,4 +81,5 @@ extra:
 
 copyright: Copyright &copy; 2019 - 2021 Games Vessel Pte. Ltd.
 repo_url: https://git.gamesvessel.cn/gv-java/biz/gv-olap
-repo_name: OLAP
+repo_name: git.gamesvessel.cn/gv-java/biz/gv-olap
+

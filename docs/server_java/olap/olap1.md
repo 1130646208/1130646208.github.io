@@ -1,6 +1,6 @@
 # Cube管理
 
-## 1.查询Cube列表
+## 查询Cube列表
 
 ### Request
 **Url** 
@@ -27,31 +27,31 @@
 | ------ | ------ | ------ |
 | code | Integer | status code | 
 | message | String |  status code explanation | 
-| data | PageResult< CubeVO >  |  查询结果数据 | 
+| data | PageResult< CubeInfoVO >  |  查询结果数据 | 
 
-**PageResult< CubeVO >**
+**PageResult< CubeInfoVO >**
 
 | 名称 | 类型 | 说明 |
 | ------ | ------ | ------ |
-| content | List< CubeVO >  |  查询结果集合| 
+| content | List< CubeInfoVO >  |  查询结果集合| 
 | page| Integer |  当前所在页（页数=page+1）| 
 | size| Integer |  当前所在页展示数据条数| 
 | total| Long | 查询到数据总条数 | 
 
-**CubeVO**
+**CubeInfoVO**
 
 | 名称 | 类型 | 说明 |
 | ------ | ------ | ------ |
 | id | Long |  查询到的Cube对象id| 
 | name | String |  查询到的Cube对象name|
-| remark | String |  查询到的Cube对象描述|
+| description | String |  查询到的Cube对象描述|
 | createTime | Instant |  查询到的Cube对象数创建时间|
 | updateTime | Instant |  查询到的Cube对象数修改时间|
 
 **Examples**
 
 ```bash
-curl -X POST https://0.0.0.0/cubr/list
+curl -X POST https://0.0.0.0/cube/list
 -H 'Content-Type: application/json' \
 -d '
     {
@@ -105,7 +105,69 @@ curl -X POST https://0.0.0.0/cubr/list
 ```
 
 
-## 2.添加Cube
+## 根据Id查询Cube
+
+### Request
+**Url** 
+
+[GET] /cube/{id}
+
+**Headers**
+
+- Content-Type: application/json 
+
+### Response
+
+**Desc**
+
+| 名称 | 类型 | 说明 |
+| ------ | ------ | ------ |
+| code | Integer | status code | 
+| message | String |  status code explanation | 
+| data |  CubeInfoVO  |  查询结果数据 | 
+
+**CubeInfoVO**
+
+| 名称 | 类型 | 说明 |
+| ------ | ------ | ------ |
+| id | Long |  查询到的Cube对象id| 
+| name | String |  查询到的Cube对象name|
+| description | String |  查询到的Cube对象描述|
+| createTime | Instant |  查询到的Cube对象数创建时间|
+| updateTime | Instant |  查询到的Cube对象数修改时间|
+
+**Examples**
+
+```bash
+curl -X GET https://0.0.0.0/cube/1
+-H 'Content-Type: application/json' 
+
+```
+
+**Expected Response**
+
+```json
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 1,
+        "name": "wiki",
+        "description": "a test",
+        "createTime": "2021-08-05T03:30:18Z",
+        "updateTime": "2021-08-05T03:30:18Z"
+    }
+}
+
+{
+  "code": 500,
+  "message": "Server Error"
+}
+```
+
+
+
+## 添加Cube
 
 ### Request
 
@@ -134,9 +196,9 @@ curl -X POST https://0.0.0.0/cubr/list
 | ------ | ------ | ------ |
 | code | Integer | status code | 
 | message | String |  status code explanation | 
-| data | CubeVO |  新增Cube对象数据 | 
+| data | CubeInfoVO |  新增Cube对象数据 | 
 
-**CubeVO**
+**CubeInfoVO**
 
 | 名称 | 类型 | 说明 |
 | ------ | ------ | ------ |
@@ -183,7 +245,7 @@ curl -X POST https://0.0.0.0/cubr/add
 ```
 
 
-## 3.更新Cube
+## 更新Cube
 
 ### Request
 
@@ -212,9 +274,9 @@ curl -X POST https://0.0.0.0/cubr/add
 | ------ | ------ | ------ |
 | code | Integer | status code | 
 | message | String |  status code explanation | 
-| data | CubeVO |  Cube对象更新后数据 | 
+| data | CubeInfoVO |  Cube对象更新后数据 | 
 
-**CubeVO**
+**CubeInfoVO**
 
 | 名称 | 类型 | 说明 |
 | ------ | ------ | ------ |
@@ -261,7 +323,7 @@ curl -X POST https://0.0.0.0/cubr/update
 ```
 
 
-## 4.删除Cube
+## 删除Cube
 
 ### Request
 

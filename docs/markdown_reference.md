@@ -4,7 +4,7 @@
 
 ### Unordered lists
 
-Example
+!!! Example
 
 ```
 - level 1
@@ -15,7 +15,7 @@ Example
     - level 2
         - level 3
 ```
-Result
+!!! Result
 
 - level 1
     * level 2
@@ -27,6 +27,8 @@ Result
 
 ### Ordered lists
 
+!!! Example
+
 ```
 1. level 1
 
@@ -35,6 +37,7 @@ Result
     2. level 2.2
         1. level 2.2.1
 ```
+!!! Result
 
 1. level 1
 
@@ -45,7 +48,7 @@ Result
 
 ### Tasklists
 
-Example
+!!! Example
 ```
 - [x] checked
 - [ ] unchecked
@@ -54,7 +57,7 @@ Example
 - [ ] unchecked
 ```
 
-Result
+!!! Result
 
 - [x] checked
 - [ ] unchecked
@@ -66,7 +69,7 @@ Result
 
 ### Usage
 
-Example:
+!!! Example
 
 ```bash
 | Method      | Description                          |
@@ -77,7 +80,7 @@ Example:
 
 ```
 
-Result:
+!!! Result
 
 | Method      | Description                          |
 | ----------- | ------------------------------------ |
@@ -88,7 +91,7 @@ Result:
 
 ### Column alignment
 
-left alignment
+!!! left alignment
 
 ```bash
 | Method      | Description                          |
@@ -97,7 +100,7 @@ left alignment
 | `PUT`       | :material-check-all: Update resource |
 | `DELETE`    | :material-close:     Delete resource |
 ```
-Result
+!!! Result
 
 | Method      | Description                          |
 | :---------- | :----------------------------------- |
@@ -105,7 +108,7 @@ Result
 | `PUT`       | :material-check-all: Update resource |
 | `DELETE`    | :material-close:     Delete resource |
 
-center alignment
+!!! center alignment
 
 ```bash
 | Method      | Description                          |
@@ -115,7 +118,7 @@ center alignment
 | `DELETE`    | :material-close:     Delete resource |
 ```
 
-Result
+!!! Result
 
 | Method      | Description                          |
 | :---------: | :----------------------------------: |
@@ -129,7 +132,7 @@ Result
 
 ### Adding line numbers
 
-Example:
+!!! Example
 
 ````python
 ```python linenums="1"
@@ -141,8 +144,7 @@ def bubble_sort(items):
 ```
 ````
 
-
-Result:
+!!! Result
 
 ``` python linenums="1"
 def bubble_sort(items):
@@ -154,7 +156,8 @@ def bubble_sort(items):
 
 ### Highlighting specific lines
 
-Example:
+!!! Example
+
 ````python
 ``` python hl_lines="2 3"
 def bubble_sort(items):
@@ -164,7 +167,8 @@ def bubble_sort(items):
                 items[j], items[j + 1] = items[j + 1], items[j]
 ```
 ````
-Result:
+
+!!! Result
 
 ``` python hl_lines="2 3"
 def bubble_sort(items):
@@ -178,13 +182,13 @@ def bubble_sort(items):
 
 ### Simple
 
-Example:
+!!! Example
 
 ```
 !!! note "My Note (can be empty)"
     This is a note.
 ```
-Result:
+!!! Result
 
 !!! note "My Note"
     This is a note.
@@ -253,7 +257,7 @@ Result:
 
 ### Embedded content
 
-Example
+!!! Example
 
 ````
 !!! note
@@ -269,7 +273,7 @@ Example
     This is a note.
 
 ````
-Result
+!!! Result
 
 !!! note
     This is a note contains code block.
@@ -285,7 +289,7 @@ Result
 
 ### Collapsible blocks
 
-Example:
+!!! Example
 
 ```
 ??? note
@@ -293,7 +297,7 @@ Example:
 
 ```
 
-Result
+!!! Result
 
 ??? note
     This is a note.
@@ -302,7 +306,7 @@ Result
 
 ### Grouping code blocks
 
-Example
+!!! Example
 
 ````
 === "C"
@@ -328,7 +332,7 @@ Example
     ```
 ````
 
-Result
+!!! Result
 === "C"
 
     ``` c
@@ -355,16 +359,14 @@ Result
 
 ### Highlighting text
 
-Example:
+!!! Example
 ```
 - ==This was marked==
 - ^^This was inserted^^
 - ~~This was deleted~~
 ```
 
-Result
-
-Example:
+!!! Result
 
 - ==This was marked==
 - ^^This was inserted^^
@@ -372,12 +374,13 @@ Example:
 
 ### Sub- and superscripts
 
-Example
+!!! Example
+
 ```
 - H~2~0
 - A^T^A
 ```
-Result
+!!! Result
 
 - H~2~0
 - A^T^A

@@ -1,5 +1,14 @@
 # 核心查询逻辑
 
+**Base Object**
+
+**TimeFilterDTO**
+
+| 名称       | 类型               | 说明   |
+| ---------- | ------------------ | ------ |
+| startTime | Instant | 开始时间(UTC) |
+| endTime     | Instant | 结束时间(UTC) |
+
 ## 1. 查询维度下可选值
 
 ### Request
@@ -17,6 +26,15 @@
 | --------- | ------- | -------- | ------ | ------------ |
 | cubeId    | Long    | 是       |        | Cube Id     |
 | dimension | String  | 是       |        | 维度列名 |
+| dimensionFilters | List DimensionFilterDTO  | 否       |        | 已选列及选值 |
+| timeFilter | TimeFilterDTO  | 是       |        | 时间范围 |
+
+**DimensionFilterDTO**
+
+| 名称       | 类型               | 说明   |
+| ---------- | ------------------ | ------ |
+| dimension | String | 列名 |
+| values     | List String | 选值 |
 
 ### Response
 
@@ -41,8 +59,19 @@ curl -X POST https://0.0.0.0/search/dimension/value
 -H 'Content-Type: application/json' \
 -d '
     {
-        cubeId: 1,
-        dimension: "country"
+        "cubeId": 1,
+        "dimension": "channel",
+        "dimensionFilters": [
+            {
+            "dimension": "srcIP",
+            "values":["1.1.1.1","8.8.8.8"]
+            }
+        ],
+        "timeFilter": {
+            "startTime": "2000-12-31T17:01:35Z",
+            "endTime": "2021-12-31T17:01:35Z"
+        }
+        
     }
 '
 ```
@@ -52,13 +81,11 @@ curl -X POST https://0.0.0.0/search/dimension/value
 **success:** 
 ```json
 {
-    "code":200,
-    "message":"ok",
-    "data":{
-        "values":[
-            "China",
-            "Japan",
-            "UK"
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "values": [
+            "#en.wikipedia"
         ]
     }
 }
@@ -90,8 +117,15 @@ curl -X POST https://0.0.0.0/search/dimension/value
 | 名称       | 类型   | 是否必须 | 默认值 | 说明               |
 | ---------- | ------ | -------- | ------ | ------------------ |
 | cubeId     | Long   | 是       |        | Cube Id            |
-| columnType | String | 否       | ROW    | 列类型: ROW, VALUE |
+| columns | List ColumnShowValueDTO | 否       | ROW    | 列类型: ROW, VALUE |
+
+**ColumnShowValueDTO**
+| 名称       | 类型   | 是否必须 | 默认值 | 说明               |
+| ---------- | ------ | -------- | ------ | ------------------ |
+| columnCategory | String | 否       | ROW    | 列类型: ROW, VALUE |
 | columnName | String | 否       |        | 列名               |
+
+
 
 ### Response
 
@@ -124,9 +158,13 @@ curl -X POST https://0.0.0.0/search/column
 -H 'Content-Type: application/json' \
 -d '
     {
-        cubeId: 1,
-        columnType: "ROW",
-        columnName: "country"
+        "cubeId":1,
+        "columns":[
+            {
+                "columnCategory":"ROW",
+                "columnName":"country"
+            }
+        ]
     }
 '
 ```
@@ -180,17 +218,10 @@ curl -X POST https://0.0.0.0/search/column
 | 名称       | 类型   | 是否必须 | 默认值 | 说明               |
 | ---------- | ------ | -------- | ------ | ------------------ |
 | cubeId     | Long   | 是       |        | Cube Id            |
-| time | TimeFilterDTO | 是       |     | 时间列必传 |
-| filters | List DimensionDTO | 是       |        | 维度: WHERE     |
+| timeFilter | TimeFilterDTO | 是       |     | 时间列必传 |
+| dimensionFilters | List DimensionDTO | 是       |        | 维度: WHERE     |
 | rows | List String | 否       |        | 维度：GROUP BY |
 | values | List String | 否       |        | 数值：一般是SUM      |
-
-**TimeFilterDTO**
-
-| 名称       | 类型   | 是否必须 | 默认值 | 说明               |
-| ---------- | ------ | -------- | ------ | ------------------ |
-| startTime     | Instant   | 是       |        | 开始时间(UTC)           |
-| endTime | Instant | 是      |     | 结束时间(UTC) |
 
 **DimensionDTO** 
 
@@ -216,8 +247,15 @@ curl -X POST https://0.0.0.0/search/column
 | ---------- | ------------------ | ------ |
 | type | String | 列名 |
 | name     | String | 列名的值 |
-| value | Long | 对应的数值 |
+| values | List QueryValueVO | 对应的数值 |
 | data     | List SearchVO | 树状图 |
+
+**QueryValueVO**
+
+| 名称       | 类型               | 说明   |
+| ---------- | ------------------ | ------ |
+| name | String | 列名 |
+| value     | String | 列名的值 |
 
 **Examples**
 
@@ -227,11 +265,11 @@ curl -X POST https://0.0.0.0/search
 -d '
     {
     "cubeId":1,
-    "time":{
+    "timeFilter":{
         "startTime":"2020-08-03T01:35:57.206775Z",
         "endTime":"2021-08-03T01:35:57.206909Z"
     },
-    "filters":[
+    "dimensionFilters":[
         {
             "dimension":"country",
             "values":[
@@ -263,42 +301,40 @@ curl -X POST https://0.0.0.0/search
 ```json
 {
     "code":200,
-    "message":"ok",
+    "message":"OK",
     "data":[
         {
-            "rowName":"country",
-            "rowValue":"Australia",
-            "valueName":"added",
-            "value":103,
-            "data":[
+            "rowName":"channel",
+            "rowValue":"#en.wikipedia",
+            "values":[
                 {
-                    "rowName":"city",
-                    "rowValue":"Adelaide",
-                    "valueName":"added",
-                    "value":102,
-                    "data":null
-                },
-                {
-                    "rowName":"city",
-                    "rowValue":"Auburn",
-                    "valueName":"added",
-                    "value":1,
-                    "data":null
+                    "name":"bytes",
+                    "value":412401
                 }
-            ]
-        },
-        {
-            "rowName":"country",
-            "rowValue":"China",
-            "valueName":"added",
-            "value":447,
+            ],
             "data":[
                 {
-                    "rowName":"city",
-                    "rowValue":"Beijing",
-                    "valueName":"added",
-                    "value":447,
-                    "data":null
+                    "rowName":"srcIP",
+                    "rowValue":"1.1.1.1",
+                    "values":[
+                        {
+                            "name":"bytes",
+                            "value":412401
+                        }
+                    ],
+                    "data":[
+                        {
+                            "rowName":"dstIP",
+                            "rowValue":"2.2.2.2",
+                            "values":[
+                                {
+                                    "name":"bytes",
+                                    "value":412401
+                                }
+                            ],
+                            "data":null
+                        }
+                    ]
                 }
             ]
         }

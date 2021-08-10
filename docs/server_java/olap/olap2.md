@@ -4,10 +4,10 @@
 
 **TimeFilterDTO**
 
-| 名称       | 类型               | 说明   |
-| ---------- | ------------------ | ------ |
+| 名称      | 类型    | 说明          |
+| --------- | ------- | ------------- |
 | startTime | Instant | 开始时间(UTC) |
-| endTime     | Instant | 结束时间(UTC) |
+| endTime   | Instant | 结束时间(UTC) |
 
 ## 1. 查询维度下可选值
 
@@ -22,35 +22,35 @@
 
 **Parameters**
 
-| 名称      | 类型    | 是否必须 | 默认值 | 说明    |
-| --------- | ------- | -------- | ------ | ------------ |
-| cubeId    | Long    | 是       |        | Cube Id     |
-| dimension | String  | 是       |        | 维度列名 |
-| dimensionFilters | List DimensionFilterDTO  | 否       |        | 已选列及选值 |
-| timeFilter | TimeFilterDTO  | 是       |        | 时间范围 |
+| 名称             | 类型                    | 是否必须 | 默认值 | 说明         |
+| ---------------- | ----------------------- | -------- | ------ | ------------ |
+| cubeId           | Long                    | 是       |        | Cube Id      |
+| dimension        | String                  | 是       |        | 维度列名     |
+| dimensionFilters | List DimensionFilterDTO | 否       |        | 已选列及选值 |
+| timeFilter       | TimeFilterDTO           | 是       |        | 时间范围     |
 
 **DimensionFilterDTO**
 
-| 名称       | 类型               | 说明   |
-| ---------- | ------------------ | ------ |
-| dimension | String | 列名 |
-| values     | List String | 选值 |
+| 名称      | 类型        | 说明 |
+| --------- | ----------- | ---- |
+| dimension | String      | 列名 |
+| values    | List String | 选值 |
 
 ### Response
 
 **Desc**
 
-| 名称      | 类型    |  说明    |
-| --------- | -------  | ------------ |
-| code    | Int    | status code     |
-| message    | String    | status code explanation     |
-| data | DimensionValueVO | 维度列可选值列表 |
+| 名称    | 类型             | 说明                    |
+| ------- | ---------------- | ----------------------- |
+| code    | Int              | status code             |
+| message | String           | status code explanation |
+| data    | DimensionValueVO | 维度列可选值列表        |
 
 **DimensionValueVO**
 
-| 名称      | 类型    |  说明    |
-| --------- | -------  | ------------ |
-| values|List String    | 维度列可选值列表     |
+| 名称   | 类型        | 说明             |
+| ------ | ----------- | ---------------- |
+| values | List String | 维度列可选值列表 |
 
 **Examples**
 
@@ -114,16 +114,17 @@ curl -X POST https://0.0.0.0/search/dimension/value
 
 **Parameters**
 
-| 名称       | 类型   | 是否必须 | 默认值 | 说明               |
-| ---------- | ------ | -------- | ------ | ------------------ |
-| cubeId     | Long   | 是       |        | Cube Id            |
+| 名称    | 类型                    | 是否必须 | 默认值 | 说明               |
+| ------- | ----------------------- | -------- | ------ | ------------------ |
+| cubeId  | Long                    | 是       |        | Cube Id            |
 | columns | List ColumnShowValueDTO | 否       | ROW    | 列类型: ROW, VALUE |
 
 **ColumnShowValueDTO**
-| 名称       | 类型   | 是否必须 | 默认值 | 说明               |
-| ---------- | ------ | -------- | ------ | ------------------ |
+
+| 名称           | 类型   | 是否必须 | 默认值 | 说明               |
+| -------------- | ------ | -------- | ------ | ------------------ |
 | columnCategory | String | 否       | ROW    | 列类型: ROW, VALUE |
-| columnName | String | 否       |        | 列名               |
+| columnName     | String | 否       |        | 列名               |
 
 
 
@@ -139,17 +140,17 @@ curl -X POST https://0.0.0.0/search/dimension/value
 
 **ColumnVO**
 
-| 名称       | 类型               | 说明   |
-| ---------- | ------------------ | ------ |
+| 名称       | 类型              | 说明   |
+| ---------- | ----------------- | ------ |
 | dimensions | List ColumnShowVO | 维度列 |
 | values     | List ColumnShowVO | 数值列 |
 
 **ColumnShowVO**
 
-| 名称       | 类型               | 说明   |
-| ---------- | ------------------ | ------ |
+| 名称    | 类型    | 说明             |
+| ------- | ------- | ---------------- |
 | disable | Boolean | 是否置灰(默认否) |
-| column     | String | 列名 |
+| column  | String  | 列名             |
 
 **Examples**
 
@@ -215,47 +216,47 @@ curl -X POST https://0.0.0.0/search/column
 
 **Parameters**
 
-| 名称       | 类型   | 是否必须 | 默认值 | 说明               |
-| ---------- | ------ | -------- | ------ | ------------------ |
-| cubeId     | Long   | 是       |        | Cube Id            |
-| timeFilter | TimeFilterDTO | 是       |     | 时间列必传 |
+| 名称             | 类型              | 是否必须 | 默认值 | 说明            |
+| ---------------- | ----------------- | -------- | ------ | --------------- |
+| cubeId           | Long              | 是       |        | Cube Id         |
+| timeFilter       | TimeFilterDTO     | 是       |        | 时间列必传      |
 | dimensionFilters | List DimensionDTO | 是       |        | 维度: WHERE     |
-| rows | List String | 否       |        | 维度：GROUP BY |
-| values | List String | 否       |        | 数值：一般是SUM      |
+| rows             | List String       | 否       |        | 维度：GROUP BY  |
+| values           | List String       | 否       |        | 数值：一般是SUM |
 
 **DimensionDTO** 
 
-| 名称        | 类型         | 是否必须 | 默认值 | 说明               |
-| ---------- | ----------- | ------- | ------ | ---------------- |
-| dimension  | String      | 是       |        | 维度列            |
-| values    | List String | 否      |         | 选择的值           |
+| 名称      | 类型        | 是否必须 | 默认值 | 说明     |
+| --------- | ----------- | -------- | ------ | -------- |
+| dimension | String      | 是       |        | 维度列   |
+| values    | List String | 否       |        | 选择的值 |
 
 
 ### Response
 
 **Desc**
 
-| 名称    | 类型     | 说明                    |
-| ------- | -------- | ----------------------- |
-| code    | Int      | status code             |
-| message | String   | status code explanation |
-| data    | List SearchVO | 结果集        |
+| 名称    | 类型          | 说明                    |
+| ------- | ------------- | ----------------------- |
+| code    | Int           | status code             |
+| message | String        | status code explanation |
+| data    | List SearchVO | 结果集                  |
 
 **SearchVO**
 
-| 名称       | 类型               | 说明   |
-| ---------- | ------------------ | ------ |
-| type | String | 列名 |
-| name     | String | 列名的值 |
+| 名称   | 类型              | 说明       |
+| ------ | ----------------- | ---------- |
+| type   | String            | 列名       |
+| name   | String            | 列名的值   |
 | values | List QueryValueVO | 对应的数值 |
-| data     | List SearchVO | 树状图 |
+| data   | List SearchVO     | 树状图     |
 
 **QueryValueVO**
 
-| 名称       | 类型               | 说明   |
-| ---------- | ------------------ | ------ |
-| name | String | 列名 |
-| value     | String | 列名的值 |
+| 名称  | 类型   | 说明     |
+| ----- | ------ | -------- |
+| name  | String | 列名     |
+| value | String | 列名的值 |
 
 **Examples**
 

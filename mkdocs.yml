@@ -9,8 +9,10 @@ nav:
 
   - Server Java:
     - OLAP:
-      - Cube管理: server_java/olap/olap1.md
-      - 核心查询: server_java/olap/olap2.md
+      - Cube基础: server_java/olap/olap1_cube.md
+      - 核心查询: server_java/olap/olap2_query.md
+      - 数据源管理: server_java/olap/olap3_datasource.md
+      - 用户基础管理: server_java/olap/olap4_user.md
     - ChangeLogs: server_java/change_log.md
     - Dictionary: server_java/dictionary.md
 

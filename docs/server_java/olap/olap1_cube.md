@@ -184,7 +184,6 @@ curl -X GET https://0.0.0.0/cube/1
 | 名称 | 类型 | 是否必须 | 备注 | 
 | ------ | ------ | ------ | ------ | 
 | id | Long | 否 | 新增Cube的id | 
-| userId | Long | 否 | 用户id |
 | name | String | 是 | 新增Cube的名称 |  
 | description | String | 是 | Cube的描述 |  
 
@@ -216,7 +215,6 @@ curl -X POST https://0.0.0.0/cubr/add
 -d '
     {
         "id": null,
-        "userId":null,
         "name":"wiki",
         "description":"a test"
     }
@@ -262,7 +260,6 @@ curl -X POST https://0.0.0.0/cubr/add
 | 名称 | 类型 | 是否必须 | 备注 | 
 | ------ | ------ | ------ | ------ |
 | id | Long | 是  | 更新Cube的id 
-| userId | Long | 是  | 用户id |  
 | name | String | 是  | 更新Cube的名称 |  
 | description | String   |是  | Cube的描述 |  
 
@@ -294,7 +291,6 @@ curl -X POST https://0.0.0.0/cubr/update
 -d '
     {
         "id": 1,
-        "userId": null,
         "name":"wiki",
         "description":"update test"
     }

@@ -1,4 +1,8 @@
 # Introduction
 
 
-Welcome to gamesvessel API documentation.
+Welcome to GamesVessel API documentation.
+
+
+Visit:
+http://gamesvessel.com/

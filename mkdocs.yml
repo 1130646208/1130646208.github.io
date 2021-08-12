@@ -4,20 +4,20 @@ site_name: GamesVessel API Document
 nav:
   - Home: index.md
 
-  - Get Started: _get_started.md
-  - Quick Start: _quick_start.md
+  - Get Started: get_started.md
+  - Markdown Reference: markdown_reference.md
 
-  - API Quick Reference:
-    - OLAP: api/_olap.md
-    - OTHER: api/_other.md
+  - Server Java:
+    - OLAP:
+      - Cube基础: server_java/olap/olap1_cube.md
+      - 核心查询: server_java/olap/olap2_query.md
+      - 数据源管理: server_java/olap/olap3_datasource.md
+      - 用户基础管理: server_java/olap/olap4_user.md
+    - ChangeLogs: server_java/change_log.md
+    - Dictionary: server_java/dictionary.md
 
-  - API Reference:
-    - Cube管理: api/olap/olap1.md
-    - 核心查询: api/olap/olap2.md
-
-  - Data Structures: _data_structures.md
-
-  - Change Log: _change_log.md
+  - Server Python: 
+    - Demo: server_python/demo/demo.md
 
 ######################configurations#####################
 theme:
@@ -27,7 +27,16 @@ theme:
     - navigation.tabs
     - navigation.top
     # - toc.integrate
+    # - navigation.sections
     - search.highlight
+    - search.suggest
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/gitlab
+
+
+  language: zh
+
 
 plugins:
   - search:
@@ -51,12 +60,28 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_png
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.tasklist
   - pymdownx.tilde
   - pymdownx.tabbed
+
+
+
+######################extra configurations#####################
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: http://gamesvessel.com/
+
+copyright: Copyright &copy; 2019 - 2021 Games Vessel Pte. Ltd.
+repo_url: https://git.gamesvessel.cn/gv-java/biz/gv-olap
+repo_name: git.gamesvessel.cn/gv-java/biz/gv-olap
+

@@ -19,7 +19,6 @@ nav:
 
   - Change Log: _change_log.md
 
-
 ######################configurations#####################
 theme:
   name: material
